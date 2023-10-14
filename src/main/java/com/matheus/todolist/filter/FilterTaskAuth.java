@@ -10,11 +10,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import com.matheus.todolist.user.IUserRepository;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -30,7 +27,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
 
         var servletPath = request.getServletPath();
 
-        if (servletPath.equals("/tasks")) {
+        if (servletPath.startsWith("/tasks")) {
             // Pegar autenticação (usuário e senha)
             var authorization = request.getHeader("Authorization");
             var authEncoded = authorization.substring("Basic".length()).trim();
