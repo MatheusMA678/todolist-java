@@ -1,1 +1,30 @@
-GET http://localhost:8080/ HTTP/1.1
+@baseURL = http://localhost:8080
+
+GET {{baseURL}} HTTP/1.1
+
+###
+
+# @name create_user
+POST {{baseURL}}/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "aaaa",
+  "name": "Matheus Mattos Avelino",
+  "password": "12345"
+}
+
+###
+
+# @name create_task
+POST {{baseURL}}/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Minha Tarefa",
+  "description": "Curso de Java - Rocketseat",
+  "priority": "high",
+  "startAt": "2023-10-14T03:00:00.000Z",
+  "endAt": "2023-10-14T04:00:00.000Z",
+  "userId": "d8af0c0c-0c6d-4cf4-be60-9b2a49c3d970"
+}
